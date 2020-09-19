@@ -1,0 +1,59 @@
+Objectives
+In this lab, you learn how to launch a solution using Cloud Marketplace.
+
+Deploying the LAMP stack on Compute Engine
+
+Connect to your instance
+gcloud compute ssh
+
+
+Install Apache and PHP on your instance
+sudo apt-get update
+sudo apt-get install apache2 php5 libapache2-mod-php5
+
+Install MySQL on your instance
+sudo apt-get install mysql-server php-mysql php-pear
+
+Configure MySQL
+sudo mysql_secure_installation
+
+Install phpMyAdmin
+sudo apt-get install phpmyadmin
+
+Transferring files
+gcloud compute scp [LOCAL_FILE_PATH] lamp-tutorial:/var/www/html
+
+Task 3: Verify your deployment
+When the deployment is complete, click the Site address link in the right pane.
+
+
+Close the congratulations browser tab.
+
+Connect to your instance
+gcloud compute ssh
+
+In a new window, a secure login shell session on your virtual machine appears.
+
+In the just-created SSH window, to change the current working directory to /opt/bitnami, execute the following command:
+
+cd /opt/bitnami
+
+To copy the phpinfo.php script, execute the following command:
+
+sudo sh -c 'echo "<?php phpinfo(); ?>" > apache2/htdocs/phpinfo.php'
+
+The phpinfo.php script displays your PHP configuration. It is often used to verify a new PHP installation.
+
+To close the SSH window, execute the following command:
+
+exit
+
+Open a new browser tab.
+
+Type the following URL, and replace SITE_ADDRESS with the URL in the Site address field in the right pane of the lampstack page.
+
+http://SITE_ADDRESS/phpinfo.php
+
+A summary of the PHP configuration of your server is displayed.
+
+Close the phpinfo tab.
